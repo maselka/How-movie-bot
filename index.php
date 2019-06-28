@@ -7,7 +7,7 @@ $result = $telegram -> getWebhookUpdates();
 $text = $result["message"]["text"];
 $chat_id = $result["message"]["chat"]["id"];
 $name = $result["message"]["from"]["username"];
-$keyboard = [["Последние статьи"],["Картинка"],["Гифка"]];
+$keyboard = [["Привет бот"]];
 
 if($text) {
     if ($text == "/start") {
