@@ -15,8 +15,6 @@ if($text) {
         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => '\'Hello, ' . $name . '!']);
     } elseif ($text == "/sayHello" and !$name) {
         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => 'Hello, незнакомец!' ]);
-    } else {
-        $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => 'Запрос не является командой' ]);
     }
 }
 ?>
