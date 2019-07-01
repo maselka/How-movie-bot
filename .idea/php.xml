@@ -19,7 +19,6 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/vendor/rtheunissen/guzzle-log-middleware" />
-      <path value="$PROJECT_DIR$/vendor/php-tmdb/api" />
       <path value="$PROJECT_DIR$/vendor/kevinrob/guzzle-cache-middleware" />
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
