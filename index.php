@@ -1,8 +1,5 @@
 <?php
-
-
 include('vendor/autoload.php');
-
 use Telegram\Bot\Api;
 
 $telegram = new Api('854559704:AAFfCPdSB-SfwwX-QNWIplVUmeV8cd-VjHk');
