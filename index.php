@@ -13,8 +13,6 @@ $keyboard = [['Какой фильм посмотреть?'],['Расскажи 
 
 $token = new Tmdb\ApiToken('951aefe4839143b19cb846c5002fb7a9');
 $client = new Tmdb\Client ($token);
-$body = new http\Message\Body;
-$body->append('{}');
 
 
 if($text) {
