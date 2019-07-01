@@ -1,6 +1,3 @@
 /vendor/
-composer
+/.idea/
 
-composer.bat
-
-composer.phar

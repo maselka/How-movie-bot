@@ -7,11 +7,22 @@ $result = $telegram -> getWebhookUpdates();
 $text = $result["message"]["text"];
 $chat_id = $result["message"]["chat"]["id"];
 $name = $result["message"]["from"]["username"];
-$keyboard = [["Привет бот"]];
+$keyboard = [["Какой фильм посмотреть?"]["Расскажи мне о фильме.."]];
+//$keyboardGenres = []
+
+$request = new HttpRequest();
+$request->setUrl('https://api.themoviedb.org/3/genre/movie/list');
+$request->setMethod(HTTP_METH_GET);
+
+$request->setQueryData(array(
+    'language' => 'ru-RU',
+    'api_key' => '951aefe4839143b19cb846c5002fb7a9'
+));
+
 
 if($text) {
     if ($text == "/start") {
-        $reply = "Добро пожаловать в бота!";
+        $reply = "Привет, я расскажу тебе все об интересном тебе фильме!";
         $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
     } elseif($text == "Привет бот") {
@@ -21,5 +32,15 @@ if($text) {
             $reply = 'Hello, незнакомец!';
         }
         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
+    } elseif($text == "Какой фильм посмотреть?") {
+        $reply = $request;
+        $telegram ->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
     }
+
+
+
 }
+
+
+
+
