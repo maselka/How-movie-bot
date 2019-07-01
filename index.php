@@ -1,8 +1,5 @@
 <?php
 
-echo 'Hello';
-die(1);
-
 include('vendor/autoload.php');
 use Telegram\Bot\Api;
 
@@ -39,7 +36,7 @@ if($text) {
         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
     } elseif($text == "Какой фильм посмотреть?") {
         $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
-        $reply = $genge;
-        $telegram ->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
+        //$reply = $genge;
+        $telegram ->sendMessage([ 'chat_id' => $chat_id, 'text' => 'никакой', 'reply_markup' => $reply_markup ]);
     }  //elseif($text == "Расскажи мне о фильме..") {}
 }
