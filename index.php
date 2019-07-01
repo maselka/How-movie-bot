@@ -7,14 +7,14 @@ $result = $telegram -> getWebhookUpdates();
 $text = $result["message"]["text"];
 $chat_id = $result["message"]["chat"]["id"];
 $name = $result["message"]["from"]["username"];
-$keyboard = [["Какой фильм посмотреть?"]["Расскажи мне о фильме.."]];
+$keyboard = [['Какой фильм посмотреть?']['Расскажи мне о фильме..']];
 //$keyboardGenres = []
 
-$request = new HttpRequest();
-$request->setUrl('https://api.themoviedb.org/3/genre/movie/list');
-$request->setMethod(HTTP_METH_GET);
+$genge = new HttpRequest();
+$genge->setUrl('https://api.themoviedb.org/3/genre/movie/list');
+$genge->setMethod(HTTP_METH_GET);
 
-$request->setQueryData(array(
+$genge->setQueryData(array(
     'language' => 'ru-RU',
     'api_key' => '951aefe4839143b19cb846c5002fb7a9'
 ));
@@ -33,12 +33,9 @@ if($text) {
         }
         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
     } elseif($text == "Какой фильм посмотреть?") {
-        $reply = $request;
+        $reply = $genge;
         $telegram ->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
     }
-
-
-
 }
 
 
