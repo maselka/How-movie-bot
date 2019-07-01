@@ -1,5 +1,8 @@
 <?php
 
+echo 'Hello';
+die(1);
+
 include('vendor/autoload.php');
 use Telegram\Bot\Api;
 
