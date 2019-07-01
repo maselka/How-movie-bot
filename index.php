@@ -24,7 +24,7 @@ if ($text) {
         }
         $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
     }
-}   
+}
 
 //include('vendor/autoload.php');
 //use Telegram\Bot\Api;
