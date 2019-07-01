@@ -8,7 +8,7 @@ $result = $telegram -> getWebhookUpdates();
 $text = $result["message"]["text"];
 $chat_id = $result["message"]["chat"]["id"];
 $name = $result["message"]["from"]["username"];
-$keyboard = [['Какой фильм посмотреть?']['Расскажи мне о фильме..']];
+$keyboard = [['Какой фильм посмотреть?'],['Расскажи мне о фильме..']];
 //$keyboardGenres = []
 
 //$genge = new HttpRequest();
