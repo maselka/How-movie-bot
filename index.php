@@ -32,9 +32,9 @@ if($text) {
     } elseif($text == "Какой фильм посмотреть?") {
         $reply = 'Какой жанр?';
         $telegram ->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
-        $genres = $client -> getGenresApi () -> getGenres ();
-        $reply = $genres;
-        $telegram ->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
+ //       $genres = $client -> getGenresApi () -> getGenres ();
+ //       $reply = $genres;
+ //       $telegram ->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
         //$keyboardGenres =
         //$reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
     }  //elseif($text == "Расскажи мне о фильме..") {}
