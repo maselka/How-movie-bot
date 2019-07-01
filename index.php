@@ -10,10 +10,8 @@ $chat_id = $result["message"]["chat"]["id"];
 $name = $result["message"]["from"]["username"];
 $keyboard = [['Какой фильм посмотреть?'],['Расскажи мне о фильме..']];
 
-
 $token = new Tmdb\ApiToken('951aefe4839143b19cb846c5002fb7a9');
 $client = new Tmdb\Client ($token);
-
 
 if($text) {
     if ($text == "/start") {
