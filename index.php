@@ -63,8 +63,4 @@ if ($text) {
 //        $reply = $genge;
 //        $telegram ->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
 //    }
-}
-
-
-
-
+//}
