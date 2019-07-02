@@ -24,7 +24,7 @@ foreach ($genres as &$value) {
 if($text) {
     if ($text == "/start") {
         $reply = "Привет, я расскажу тебе все об интересном тебе фильме!";
-        $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
+        $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
     } elseif($text == "Привет бот") {
         if ($name) {
@@ -36,7 +36,7 @@ if($text) {
     } elseif($text == "Какой фильм посмотреть?") {
         $reply = 'Какой жанр?';
         $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
-        $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboardGenres, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
+        $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboardGenres, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
 
 
     }
