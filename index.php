@@ -20,7 +20,7 @@ if($text) {
         $result = $client->getSearchApi()->searchMovies($text);
         var_dump($result);
         foreach ($result as $value) {
-        $posterUrl = "https://image.tmdb.org/t/p/w300_and_h450_bestv2" . $value['poster_path'];
+        $posterUrl = "http://image.tmdb.org/t/p/w300_and_h450_bestv2" . $value['poster_path'];
         $movieInfo = $value['overview'];
         $telegram->sendPhoto([ 'chat_id' => $chat_id, 'photo' => $posterUrl, 'caption' => $movieInfo ]);
         }
