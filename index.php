@@ -14,12 +14,14 @@ $token = new Tmdb\ApiToken('951aefe4839143b19cb846c5002fb7a9');
 $client = new Tmdb\Client ($token);
 $keyboardGenres = array();
 
+
 $temp = array();
 $genres = $client -> getGenresApi () -> getGenres ();
 foreach ($genres as &$value) {
     $temp = $value->name;
     $keyboardGenres[] = $temp;
 }
+
 
 if($text) {
     if ($text == "/start") {
