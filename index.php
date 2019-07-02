@@ -17,7 +17,7 @@ if($text) {
         $reply = "Привет, если ты напишешь название фильма, то я расскажу тебе о нем все что знаю";
         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply]);
     } elseif ($text) {
-        $result = $client->getSearchApi()->searchMovies($text, "ru-RU");
+        $result = $client->getSearchApi()->searchMovies($text);
         foreach ($result['results'] as $value) {
             $posterUrl = "http://image.tmdb.org/t/p/w300_and_h450_bestv2" . $value['poster_path'];
             $movieInfo = $value['tittle'] . "\n" . $value['overview'];
