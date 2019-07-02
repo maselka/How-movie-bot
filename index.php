@@ -18,7 +18,8 @@ if($text) {
         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply]);
     } elseif ($text) {
         $result = $client->getSearchApi()->searchMovies($text);
-        $resultArray = json_decode($result ) -> results;
+        $resultObject = json_decode($result);
+        $resultArray = $resultObject -> results;
 
         foreach ($resultArray as $value) {
         $posterUrl = $value -> poster_path;
