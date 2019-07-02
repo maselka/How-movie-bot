@@ -15,11 +15,12 @@ $client = new Tmdb\Client ($token);
 $keyboardGenres = array();
 
 
-$temp = array();
+$tempArray = array();
 $genres = $client -> getGenresApi () -> getGenres ();
-foreach ($genres as &$value) {
-    $temp = $value->name;
-    $keyboardGenres[] = $temp;
+$GenresArray = $genres -> genres;
+foreach ($GenresArray as &$value) {
+    $temArray = $value->name;
+    $keyboardGenres[] = $tempArray;
 }
 
 
