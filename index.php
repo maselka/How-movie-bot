@@ -19,7 +19,7 @@ if($text) {
     } elseif ($text) {
         $result = $client->getSearchApi()->searchMovies($text);
         error_log(var_export($result, true));
-        foreach ($result as $value) {
+        foreach ($result['results'] as $value) {
             error_log($value['poster_path']);
         $posterUrl = "http://image.tmdb.org/t/p/w300_and_h450_bestv2" . $value['poster_path'];
             error_log($posterUrl = "http://image.tmdb.org/t/p/w300_and_h450_bestv2" . $value['poster_path']);
