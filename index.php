@@ -18,10 +18,10 @@ if($text) {
         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply]);
     } elseif ($text) {
         $result = $client->getSearchApi()->searchMovies($text);
-
+        var_dump($result);
         foreach ($result as $value) {
-        $posterUrl = $value -> poster_path;
-        $movieInfo = $value -> overview;
+        $posterUrl = $value['poster_path'];
+        $movieInfo = $value['overview'];
         $telegram->sendPhoto([ 'chat_id' => $chat_id, 'photo' => $posterUrl, 'caption' => $movieInfo ]);
         }
     }
