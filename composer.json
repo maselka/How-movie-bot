@@ -1,6 +1,7 @@
 {
     "require": {
       "php-tmdb/api": "^2.1",
-      "irazasyed/telegram-bot-sdk": "^2.2"
+      "irazasyed/telegram-bot-sdk": "^2.2",
+      "ext-json": "*"
     }
 }
