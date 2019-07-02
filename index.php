@@ -36,7 +36,7 @@ if($text) {
     } elseif($text == "Какой фильм посмотреть?") {
         $reply = 'Какой жанр?';
         $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
-        $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboardGenres, 'resize_keyboard' => true, 'one_time_keyboard' => true ]);
+        $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboardGenres, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
 
 
     }
