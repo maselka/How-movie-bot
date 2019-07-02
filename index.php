@@ -12,6 +12,14 @@ $keyboard = [['Какой фильм посмотреть?'],['Расскажи 
 
 $token = new Tmdb\ApiToken('951aefe4839143b19cb846c5002fb7a9');
 $client = new Tmdb\Client ($token);
+$keyboardGenres = array();
+
+$temp = array();
+$genres = $client -> getGenresApi () -> getGenres ();
+foreach ($genres as &$value) {
+    $temp[] = $value->name;
+    $keyboardGenres[] = $temp;
+}
 
 if($text) {
     if ($text == "/start") {
@@ -27,11 +35,9 @@ if($text) {
         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
     } elseif($text == "Какой фильм посмотреть?") {
         $reply = 'Какой жанр?';
-        $telegram ->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
- //       $genres = $client -> getGenresApi () -> getGenres ();
- //       $reply = $genres;
- //       $telegram ->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
-        //$keyboardGenres =
-        //$reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
-    }  //elseif($text == "Расскажи мне о фильме..") {}
+        $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup]);
+        $reply_markup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboardGenres, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
+
+
+    }
 }
