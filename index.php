@@ -32,13 +32,11 @@ function getTextUnderPoster($arrayWithInfo) {
 
 function caсhResponse ($db, $response, $request) {
     $row = [
-        'id' => '',
-        'response' =>  json_encode($response),
         'request' => $request,
+        'response' =>  json_encode($response),
         'date' => new DateTime()
     ];
-    $id = $db->insert('cach_requests', $row);
-    return $id;
+    return $db->insert('cach_requests', $row);
 }
 
 function getResponse($db, $request) {
