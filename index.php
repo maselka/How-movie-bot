@@ -14,21 +14,33 @@ $name = $result["message"]["from"]["username"];
 $token = new Tmdb\ApiToken('951aefe4839143b19cb846c5002fb7a9');
 $client = new Tmdb\Client ($token);
 
-function getUrlPoster($ArrayWithInfo) {
-    return "http://image.tmdb.org/t/p/w300_and_h450_bestv2" . $ArrayWithInfo['poster_path'];
+function getUrlPoster($arrayWithInfo) {
+    return "http://image.tmdb.org/t/p/w300_and_h450_bestv2" . $arrayWithInfo['poster_path'];
 }
 
-function getTextUnderPoster($ArrayWithInfo) {
-    return $ArrayWithInfo['original_title'] . '
-    ' . $ArrayWithInfo['overview'];
+function getTextUnderPoster($arrayWithInfo) {
+    return $arrayWithInfo['original_title'] . '
+    ' . $arrayWithInfo['overview'];
 }
 
+function insertMoviesInDb ($searh, $arrayWithMovies) {
+    $id = $db->insert('searhQueries', $searh);
+    foreach ($arrayWithMovies as $value)
+    $id = $db->insert('movies', $value);
+    return $id;
+}
+
+function GetMovieOfDb($searh) {
+
+}
 
 if($text) {
     if ($text == "/start") {
         $reply = "Привет, если ты напишешь название фильма, то я расскажу тебе о нем все что знаю";
         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply]);
     } elseif ($text) {
+        $db->get ("query", 1);
+        $user = $db->getOne ("users");
         $result = $client->getSearchApi()->searchMovies($text);
         for($i=0; $i<3; $i++) {
             $telegram->sendPhoto(['chat_id' => $chat_id, 'parse_mode' => 'HTML', 'photo' => getUrlPoster($result['results'][$i]), 'caption' => getTextUnderPoster($result['results'][$i])]);
