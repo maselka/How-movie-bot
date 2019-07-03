@@ -30,15 +30,15 @@ function getTextUnderPoster($arrayWithInfo) {
     ' . $arrayWithInfo['overview'];
 }
 
-function caсhResponse ($db, $response, $request) {
-    $row = [
-      'response' =>  json_encode($response),
-      'request' => $request,
-      'date' => new DateTime()
-    ];
-    $id = $db->insert('cach_response', $row);
-    return $id;
-}
+//function caсhResponse ($db, $response, $request) {
+//    $row = [
+//      'response' =>  json_encode($response),
+//      'request' => $request,
+//      'date' => new DateTime()
+//    ];
+//    $id = $db->insert('cach_response', $row);
+//    return $id;
+//}
 
 //function getResponse($db, $request) {
 //    $db->where('request', $request);
@@ -54,7 +54,7 @@ if($text) {
         //$result = getResponse($text);
         //if (!$result) {
             $result = $client->getSearchApi()->searchMovies($text);
-            caсhResponse ($result, $text);
+            //caсhResponse ($result, $text);
         //}
         for($i=0; $i<3; $i++) {
             $telegram->sendPhoto(['chat_id' => $chat_id, 'parse_mode' => 'HTML', 'photo' => getUrlPoster($result['results'][$i]), 'caption' => getTextUnderPoster($result['results'][$i])]);
