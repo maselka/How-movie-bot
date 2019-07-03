@@ -51,11 +51,11 @@ if($text) {
         $reply = "Привет, если ты напишешь какую нибудь фразу или слово, то я покажу тебе 3 фильма связанных с этим выражением";
         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply]);
     } elseif ($text) {
-        $result = getResponse($text);
-        if (!$result) {
+        //$result = getResponse($text);
+        //if (!$result) {
             $result = $client->getSearchApi()->searchMovies($text);
             caсhResponse ($result, $text);
-        }
+        //}
         for($i=0; $i<3; $i++) {
             $telegram->sendPhoto(['chat_id' => $chat_id, 'parse_mode' => 'HTML', 'photo' => getUrlPoster($result['results'][$i]), 'caption' => getTextUnderPoster($result['results'][$i])]);
         }
