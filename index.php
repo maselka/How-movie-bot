@@ -30,8 +30,8 @@ if($text) {
         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply]);
     } elseif ($text) {
         $result = $client->getSearchApi()->searchMovies($text);
-        foreach ($result['results'] as $value) {
-            $telegram->sendPhoto([ 'chat_id' => $chat_id, 'parse_mode' => 'HTML', 'photo' => getUrlPoster($value), 'caption' => getTextUnderPoster($value)]);
+        for($i=0; $i<3; $i++) {
+            $telegram->sendPhoto(['chat_id' => $chat_id, 'parse_mode' => 'HTML', 'photo' => getUrlPoster($result['results'][$i]), 'caption' => getTextUnderPoster($result['results'][$i])]);
         }
     }
 }
