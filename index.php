@@ -4,6 +4,11 @@ include('vendor/autoload.php');
 use Telegram\Bot\Api;
 
 $db  =  new  MysqliDb ( 'localhost' , 'root' , '123456789' , ' databaseName ' );
+const DB_HOST = 'eu-cdbr-west-02.cleardb.net';
+const DB_USER = 'root';
+const DB_PASS = '9a13c73f';
+const DB_NAME = 'b1597e3a08d730';
+
 
 $telegram = new Api('854559704:AAFfCPdSB-SfwwX-QNWIplVUmeV8cd-VjHk');
 $result = $telegram -> getWebhookUpdates();
@@ -39,7 +44,7 @@ if($text) {
         $reply = "Привет, если ты напишешь название фильма, то я расскажу тебе о нем все что знаю";
         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply]);
     } elseif ($text) {
-        $db->get ("query", 1);
+        $db->get("query", 1);
         $user = $db->getOne ("users");
         $result = $client->getSearchApi()->searchMovies($text);
         for($i=0; $i<3; $i++) {
