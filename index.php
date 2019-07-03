@@ -3,7 +3,7 @@
 include('vendor/autoload.php');
 use Telegram\Bot\Api;
 
-$db  =  new  MysqliDb ( 'eu-cdbr-west-02.cleardb.net' , 'b1597e3a08d730' , '9a13c73f' , 'heroku_34fcf0748940255' );
+$db  = new MysqliDb( 'eu-cdbr-west-02.cleardb.net' , 'b1597e3a08d730' , '9a13c73f' , 'heroku_34fcf0748940255' );
 const DB_HOST = 'eu-cdbr-west-02.cleardb.net';
 const DB_USER = 'b1597e3a08d730';
 const DB_PASS = '9a13c73f';
