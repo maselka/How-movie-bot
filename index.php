@@ -3,18 +3,22 @@
 include('vendor/autoload.php');
 use Telegram\Bot\Api;
 
-$db  = new MysqliDb( 'eu-cdbr-west-02.cleardb.net' , 'b1597e3a08d730' , '9a13c73f' , 'heroku_34fcf0748940255' );
 const DB_HOST = 'eu-cdbr-west-02.cleardb.net';
 const DB_USER = 'b1597e3a08d730';
 const DB_PASS = '9a13c73f';
+const DB_NAME = 'heroku_34fcf0748940255';
+const TMBD_API_TOKEN = '951aefe4839143b19cb846c5002fb7a9';
+const TELEGRAM_API_TOKEN = '854559704:AAFfCPdSB-SfwwX-QNWIplVUmeV8cd-VjHk';
 
-$telegram = new Api('854559704:AAFfCPdSB-SfwwX-QNWIplVUmeV8cd-VjHk');
+$db  = new MysqliDb( DB_HOST , DB_USER , DB_PASS , DB_NAME );
+
+$telegram = new Api(TELEGRAM_API_TOKEN);
 $result = $telegram -> getWebhookUpdates();
 $text = $result["message"]["text"];
 $chat_id = $result["message"]["chat"]["id"];
 $name = $result["message"]["from"]["username"];
 
-$token = new Tmdb\ApiToken('951aefe4839143b19cb846c5002fb7a9');
+$token = new Tmdb\ApiToken(TMBD_API_TOKEN);
 $client = new Tmdb\Client ($token);
 
 function getUrlPoster($arrayWithInfo) {
