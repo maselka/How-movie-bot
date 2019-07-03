@@ -36,7 +36,7 @@ function caсhResponse ($db, $response, $request) {
       'request' => $request,
       'date' => new DateTime()
     ];
-    $id = $db->insert('cach_response', $row);
+    $id = $db->insert('cach_requests', $row);
     return $id;
 }
 
