@@ -40,11 +40,11 @@ function caсhResponse ($db, $response, $request) {
     return $id;
 }
 
-function getResponse($db, $request) {
-    $db->where('request', $request);
-    $response  =  $db -> getValue('cach_requests', 'response');
-    return  json_decode($response);
-}
+//function getResponse($db, $request) {
+//    $db->where('request', $request);
+//    $response  =  $db -> getValue('cach_requests', 'response');
+//    return  json_decode($response);
+//}
 
 if($text) {
     if ($text == "/start") {
