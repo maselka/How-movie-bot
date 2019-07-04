@@ -23,7 +23,7 @@ function getResponse($db, $request){
 function insertRow($db, $request, $response){
     $row = [
         'request' => $request,
-        'response' => 'NULL', //json_encode($response),
+        'response' => '123', //json_encode($response),
         'date' => 'NULL' //new DateTime()
     ];
     $db->insert($db, $row);
