@@ -64,7 +64,6 @@ if($text) {
             }
             $telegram->sendPhoto(['chat_id' => $chat_id, 'parse_mode' => 'HTML', 'photo' => getUrlPoster($result['results'][$i]), 'caption' => getTextUnderPoster($result['results'][$i])]);
         }
-
     }
 }
 

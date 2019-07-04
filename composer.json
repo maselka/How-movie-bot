@@ -1,8 +1,8 @@
 {
     "require": {
+      "thingengineer/mysqli-database-class": "dev-master",
       "php-tmdb/api": "^2.1",
       "irazasyed/telegram-bot-sdk": "^2.2",
-      "ext-json": "*",
-      "thingengineer/mysqli-database-class": "dev-master"
+      "ext-json": "*"
     }
 }
