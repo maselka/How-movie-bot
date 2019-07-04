@@ -26,5 +26,5 @@ function insertRow($db, $request, $response){
         'response' => '123', //json_encode($response),
         'date' => 'NULL' //new DateTime()
     ];
-    $db->insert($db, $row);
+    \\$db->insert($db, $row);
 }
