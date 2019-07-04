@@ -17,7 +17,7 @@ function initDB(): MysqliDb{
 function getResponse($db, $request){
     $db->where('request', $request);
     $response = $db->getValue('cach_requests', 'response');
-    return json_decode($response);
+    return json_decode($response, JSON_OBJECT_AS_ARRAY);
 }
 
 function insertRow($db, $request, $response){
