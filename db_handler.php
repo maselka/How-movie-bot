@@ -15,14 +15,14 @@ function initDB(): MysqliDb
     return $db;
 }
 
-function getResponse(MysqliDb $db, $request)
+function getResponse($db, $request)
 {
     $db->where('request', $request);
     $response = $db->getValue('cach_requests', 'response');
     return json_decode($response);
 }
 
-function insertRow(MysqliDb $db, $request, $response)
+function insertRow($db, $request, $response)
 {
     $row = [
         'request' => $request,
