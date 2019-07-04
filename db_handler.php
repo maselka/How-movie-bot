@@ -20,11 +20,12 @@ function getResponse($db, $request){
     return json_decode($response, JSON_OBJECT_AS_ARRAY);
 }
 
-function insertRow($db, $request, $response){
+function insertRow($db, $id, $request, $response){
     $row = [
+        'id' => $id;
         'request' => $request,
         'response' => '123', //json_encode($response),
         'date' => 'NULL' //new DateTime()
     ];
-    \\$db->insert($db, $row);
+    $db->insert($db, $row);
 }
