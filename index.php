@@ -47,7 +47,10 @@ function getResponse($db, $request) {
 
 if($text) {
     if ($text == "/start") {
-        $reply = "Привет, если ты напишешь какую нибудь фразу или слово, то я покажу тебе 3 фильма связанных с этим выражением";
+        if(!$name) {
+          $name = 'Незнакомец';
+        }
+        $reply = "Привет " . $name . ", если ты напишешь какую нибудь фразу или слово, то я покажу тебе 3 фильма связанных с этим выражением";
         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply]);
     } elseif ($text) {
         $result = getResponse($db, $text);
@@ -60,4 +63,8 @@ if($text) {
         }
 
     }
+}
+
+register_shutdown_function(function () {
+    http_response_code(200);
 }
