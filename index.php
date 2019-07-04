@@ -67,4 +67,4 @@ if($text) {
 
 register_shutdown_function(function () {
     http_response_code(200);
-}
+});
