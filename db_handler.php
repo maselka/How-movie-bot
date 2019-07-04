@@ -29,5 +29,5 @@ function insertRow(MysqliDb $db, $request, $response)
         'response' => json_encode($response),
         'date' => new DateTime()
     ];
-    $db->insert('user_request_history', $row);
+    $db->insert($db, $row);
 }
