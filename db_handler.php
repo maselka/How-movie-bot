@@ -14,18 +14,18 @@ function initDB(): MysqliDb{
     return $db;
 }
 
-function getResponse($db, $request){
+function getResponse(MysqliDb $db, $request){
     $db->where('request', $request);
     $response = $db->getValue('cach_requests', 'response');
     return json_decode($response, JSON_OBJECT_AS_ARRAY);
 }
 
-function insertRow($db, $id, $request, $response){
+function insertRow(MysqliDb $db, $id, $request, $response){
     $row = [
         'id' => $id,
         'request' => $request,
         'response' => json_encode($response),
         'date' => new DateTime()
     ];
-    //$db->insert($db, json_encode($row));
+    $db->insert($db,$row);
 }
