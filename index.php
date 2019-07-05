@@ -26,10 +26,10 @@ if($text) {
         $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply]);
     } elseif ($text) {
         //$result = getResponse($db, $text);
-        \\if (!$result) {
-        \\    $result = $client->getSearchApi()->searchMovies($text);
-        \\    insertRow($db, $id, $text, $result);
-        \\}
+        //if (!$result) {
+        //    $result = $client->getSearchApi()->searchMovies($text);
+        //    insertRow($db, $id, $text, $result);
+        //}
         for($i=0; $i<3; $i++) {
             if (!$result['results'][$i]) {
                 break;
