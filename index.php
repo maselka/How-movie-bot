@@ -28,7 +28,7 @@ if($text) {
         //$result = getResponse($db, $text);
         //if (!$result) {
               $result = $client->getSearchApi()->searchMovies($text);
-              insertRow($db, $id, $text, $result);
+              insertRow($db, $chat_id, $text, $result);
         //}
         for($i=0; $i<1; $i++) {
             if (!$result['results'][$i]) {
