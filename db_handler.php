@@ -27,5 +27,5 @@ function insertRow(MysqliDb $db, $id, $request, $response){
         'response' => json_encode($response),
         'date' => new DateTime()
     ];
-    $db->insert($db,$row);
+    $db->insert($db, json_encode($row));
 }
