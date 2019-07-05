@@ -13,6 +13,7 @@ $result = $telegram -> getWebhookUpdates();
 $text = $result["message"]["text"];
 $chat_id = $result["message"]["chat"]["id"];
 $name = $result["message"]["from"]["username"];
+$id = 1;
 
 $db = initDB();
 
@@ -27,7 +28,7 @@ if($text) {
         $result = getResponse($db, $text);
         if (!$result) {
             $result = $client->getSearchApi()->searchMovies($text);
-            insertRow ($db, $id, $text, $result);
+            insertRow($db, $id, $text, $result);
         }
         for($i=0; $i<3; $i++) {
             if (!$result['results'][$i]) {
@@ -36,6 +37,9 @@ if($text) {
             $telegram->sendPhoto(['chat_id' => $chat_id, 'parse_mode' => 'HTML', 'photo' => getUrlPoster($result['results'][$i]), 'caption' => getTextUnderPoster($result['results'][$i])]);
         }
     }
+} else {
+    $reply = "Нужно ввести какое нибудь выражение";
+    $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply]);
 }
 
 register_shutdown_function(function () {
