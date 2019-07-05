@@ -22,7 +22,7 @@ function getResponse(MysqliDb $db, $request){
 
 function insertRow(MysqliDb $db, $id, $request, $response){
     $row = [
-        'id' => $id,
+        //'id' => $id,
         'request' => $request,
         'response' => json_encode($response),
         'date' => new DateTime()
