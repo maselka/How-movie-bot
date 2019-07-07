@@ -20,12 +20,11 @@ function getResponse(MysqliDb $db, $request){
     return json_decode($response, JSON_OBJECT_AS_ARRAY);
 }
 
-function insertRow(MysqliDb $db, $id, $request, $response){
+function insertRow(MysqliDb $db, $request, $response){
     $row = [
-        'id' => 1,
         'request' => $request,
         'response' => json_encode($response),
         'date' => new DateTime()
     ];
-    $db->insert('cach_requests', $row);
+    $id = $db->insert('cach_requests', $row);
 }
