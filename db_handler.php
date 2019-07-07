@@ -18,7 +18,7 @@ function getResponse(MysqliDb $db, $request){
     $db->where('request', $request);
     $response = $db->getValue('cach_requests', 'response');
     $date_request =  $db->getValue('cach_requests', 'date');
-    $date_now = date('Y-m-d');
+    $date_now = time();
     $datediff = ($date_now - $date_request);
     echo $datediff;
     if ($datediff < 1) {
@@ -30,7 +30,7 @@ function insertRow(MysqliDb $db, $request, $response){
     $row = [
         'request' => $request,
         'response' => json_encode($response),
-        'date' => date('Y-m-d')
+        'date' => time()
     ];
     $id = $db->insert('cach_requests', $row);
 }
