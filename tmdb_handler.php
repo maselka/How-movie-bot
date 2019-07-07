@@ -17,6 +17,5 @@ function getUrlPoster($arrayWithInfo)
 
 function getTextUnderPoster($arrayWithInfo)
 {
-    return $arrayWithInfo['original_title'] . '
-    ' . $arrayWithInfo['overview'];
+    return $arrayWithInfo['original_title'] . PHP_EOL . $arrayWithInfo['overview'];
 }

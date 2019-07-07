@@ -17,7 +17,12 @@ function initDB(): MysqliDb{
 function getResponse(MysqliDb $db, $request){
     $db->where('request', $request);
     $response = $db->getValue('cach_requests', 'response');
-    return json_decode($response, JSON_OBJECT_AS_ARRAY);
+    $date_request =  $db->getValue('cach_requests', 'date');
+    $date_now = date('Y-m-d');
+    $datediff = ($date_now - $date_request) / (60*60*24);
+    if ($datediff < 1) {
+        return json_decode($response);
+    }
 }
 
 function insertRow(MysqliDb $db, $request, $response){
