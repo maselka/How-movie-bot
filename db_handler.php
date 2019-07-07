@@ -23,8 +23,8 @@ function getResponse(MysqliDb $db, $request){
 function insertRow(MysqliDb $db, $request, $response){
     $row = [
         'request' => $request,
-        'response' => json_encode($response),
-        'date' => new DateTime()
+        'response' => json_encode($response)
+       // 'date' => new DateTime()
     ];
     $id = $db->insert('cach_requests', $row);
 }
