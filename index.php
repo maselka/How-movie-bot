@@ -27,6 +27,7 @@ if($text) {
     } elseif ($text) {
         $result = getResponse($db, $text);
         if (!$result) {
+
               $result = $client->getSearchApi()->searchMovies($text);
               insertRow($db, $text, $result);
         }

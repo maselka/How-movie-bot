@@ -19,7 +19,8 @@ function getResponse(MysqliDb $db, $request){
     $response = $db->getValue('cach_requests', 'response');
     $date_request =  $db->getValue('cach_requests', 'date');
     $date_now = date('Y-m-d');
-    $datediff = ($date_now - $date_request) / (60*60*24);
+    $datediff = ($date_now - $date_request);
+    echo $datediff;
     if ($datediff < 1) {
         return json_decode($response);
     }
