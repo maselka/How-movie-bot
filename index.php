@@ -30,7 +30,7 @@ if($text) {
               $result = $client->getSearchApi()->searchMovies($text);
               insertRow($db, $text, $result);
         //}
-        for($i=0; $i<1; $i++) {
+        for($i=0; $i<3; $i++) {
             if (!$result['results'][$i]) {
                 break;
             }
