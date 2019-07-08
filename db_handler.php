@@ -18,7 +18,7 @@ function getResponse(MysqliDb $db, $request){
     $db->where('request', $request);
     $cach_request = $db->get('cach_requests');
 
-    error_log(var_export($cach_request, true));
+    error_log(var_export($cach_request[0], true));
 
     //$response = $db->getValue('cach_requests', 'response');
     //$date_request = $db->getValue('cach_requests', 'date');
@@ -26,7 +26,7 @@ function getResponse(MysqliDb $db, $request){
     //$date_request = date_create_from_format('Y.m.d', $date_request);
     //$date_now = new DateTime('now');
 
-    $date_request = DateTime::createFromFormat('Y.m.d', $cach_request['date']);
+    $date_request = DateTime::createFromFormat('Y-m-d', $cach_request[0]['date']);
     $date_now = new DateTime('now');
 
     $date_diff = date_diff($date_now, $date_request);//->format('%a');
