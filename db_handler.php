@@ -12,19 +12,18 @@ function initDB(): MysqliDb{
 function getResponseFromBD(MysqliDb $db, $request){
     $db->where('request', $request);
     $cach_request = $db->get('cach_requests');
-    if ($cach_request == NULL) {
-        return NULL;
-    }
-    $date_request = DateTime::createFromFormat('Y-m-d', $cach_request[0]['date']);
-    $date_now = new DateTime('now');
-    $date_diff = date_diff($date_now, $date_request)->format('%a');
-    error_log(var_export($cach_request, true));
-    error_log(var_export($date_diff, true));
-    if ($date_diff == '0') {
-        return json_decode($cach_request[0]['response'], true);
-    } else {
-        $db->where('request', $request);
-        $db->delete('cach_requests');
+    if ($cach_request) {
+        $date_request = DateTime::createFromFormat('Y-m-d', $cach_request[0]['date']);
+        $date_now = new DateTime('now');
+        $date_diff = date_diff($date_now, $date_request)->format('%a');
+        error_log(var_export($cach_request, true));
+        error_log(var_export($date_diff, true));
+        if ($date_diff == '0') {
+            return json_decode($cach_request[0]['response'], true);
+        } else {
+            $db->where('request', $request);
+            $db->delete('cach_requests');
+        }
     }
 }
 
