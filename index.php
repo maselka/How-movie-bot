@@ -24,7 +24,7 @@ if($text) {
         $telegram->sendMessage(['chat_id' => $chat_id, 'text' => $reply]);
     } elseif ($text) {
         $response = getResponseFromBD($db, $text);
-        if (!$result) {
+        if (!$response) {
               $response = getResponseFromAPI($text);
               insertResponseInDB($db, $text, $response);
         }

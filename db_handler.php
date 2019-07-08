@@ -23,7 +23,8 @@ function getResponseFromBD(MysqliDb $db, $request){
     if ($date_diff == '0') {
         return json_decode($cach_request[0]['response'], true);
     } else {
-        return NULL;
+        $db->where('request', $request);
+        $db->delete('cach_requests');
     }
 }
 
@@ -33,7 +34,5 @@ function insertResponseInDB(MysqliDb $db, $request, $response) {
         'response' => json_encode($response),
         'date' => date('Y-m-d')
     ];
-    $db->where('request', $request);
-    $db->delete('cach_requests');
-    //$db->insert('cach_requests', $response_row);
+    $db->insert('cach_requests', $response_row);
 }
