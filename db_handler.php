@@ -34,6 +34,7 @@ function insertResponseInDB(MysqliDb $db, $request, $response) {
     error_log(var_export(($db->where('request', $request)), true));
     error_log(var_export(($db->update ('cach_requests', $response_row)), true));
     $db->where('request', $request);
+    return NULL;
     $cach_request = $db->get('cach_requests');
 //    if ($cach_request) {
 //
