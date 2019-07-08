@@ -20,12 +20,12 @@ function getResponse(MysqliDb $db, $request){
     $date_request = $db->getValue('cach_requests', 'date');
     //$date_request = date_create_from_format('Y.m.d', $date_request);
     //$date_now = new DateTime('now');
-    //$date_diff = date_diff($date_now, $date_request)->format('%a');
 
     $date_request = DateTime::createFromFormat('Y.m.d', $date_request);
     $date_now = new DateTime('now');
 
-    $date_diff=$date_request->diff($date_now)->format("%a");
+    $date_diff = date_diff($date_now, $date_request)//->format('%a');
+    //$date_diff=$date_request->diff($date_now)->format("%a");
     error_log(var_export($date_request, true));
     error_log(var_export($date_now, true));
     error_log(var_export($date_diff, true));
