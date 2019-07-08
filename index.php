@@ -29,7 +29,7 @@ if($text) {
               insertResponseInDB($db, $text, $response);
         }
         for($i=0; $i<3; $i++) {
-            if (!$response['results'][$i]) {
+            if (!$response[$i]) {
                 break;
             }
             $telegram->sendPhoto(['chat_id' => $chat_id, 'parse_mode' => 'HTML', 'photo' => getUrlPoster($response, [$i]), 'caption' => getTextUnderPoster($response, [$i])]);

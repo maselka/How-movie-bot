@@ -19,8 +19,8 @@ function getResponseFromBD(MysqliDb $db, $request){
         error_log(var_export($cach_request, true));
         error_log(var_export($date_diff, true));
         if ($date_diff == '0') {
-            error_log(var_export(json_decode($cach_request[0]['response'], true), true));
-            return json_decode($cach_request[0]['response'], true);
+            error_log(var_export(json_decode($cach_request[0]['response'], true)['results'], true));
+            return json_decode($cach_request[0]['response'], true)['results'];
         } else {
             $db->where('request', $request);
             $db->delete('cach_requests');
