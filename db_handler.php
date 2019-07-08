@@ -32,10 +32,6 @@ function insertResponseInDB(MysqliDb $db, $request, $response) {
         'date' => date('Y-m-d')
     ];
     $db->where('request', $request);
-    $cach_request = $db->get('cach_requests');
-    if ($cach_request) {
-        $db->update ('cach_requests', $response_row);
-    } else {
-        $db->insert('cach_requests', $response_row);
-    }
+    $db->delete('cach_requests');
+    //$db->insert('cach_requests', $response_row);
 }
