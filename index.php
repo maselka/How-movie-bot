@@ -32,7 +32,7 @@ if($text) {
             if (!$response['results'][$i]) {
                 break;
             }
-            $telegram->sendPhoto(['chat_id' => $chat_id, 'parse_mode' => 'HTML', 'photo' => getUrlPoster($response['results'][$i]), 'caption' => getTextUnderPoster($response['results'][$i])]);
+            $telegram->sendPhoto(['chat_id' => $chat_id, 'parse_mode' => 'HTML', 'photo' => getUrlPoster($response, [$i]), 'caption' => getTextUnderPoster($response, [$i])]);
         }
     }
 } else {
