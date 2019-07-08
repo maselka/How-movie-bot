@@ -36,7 +36,7 @@ function getResponse(MysqliDb $db, $request){
     error_log(var_export($date_diff, true));
     error_log(var_export(($date_diff == '0'), true));
     if ($date_diff == '0') {
-        return json_decode($cach_request['response'], true);
+        return json_decode($cach_request[0]['response'], true);
     } else {
         return NULL;
     }
