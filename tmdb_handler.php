@@ -1,11 +1,7 @@
 <?php
 
-use Tmdb\ApiToken;
-use Tmdb\Client;
-
 require_once('vendor/autoload.php');
-
-const TMDB_API_TOKEN = '951aefe4839143b19cb846c5002fb7a9';
+require_once('consts.php');
 
 $token = new Tmdb\ApiToken(TMDB_API_TOKEN);
 $client = new Tmdb\Client ($token);
@@ -18,4 +14,9 @@ function getUrlPoster($arrayWithInfo)
 function getTextUnderPoster($arrayWithInfo)
 {
     return $arrayWithInfo['original_title'] . PHP_EOL . $arrayWithInfo['overview'];
+}
+
+function getResponseFromAPI($request) {
+    global $client;
+    return $client->getSearchApi()->searchMovies($request);
 }
