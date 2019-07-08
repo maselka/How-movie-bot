@@ -12,6 +12,9 @@ function initDB(): MysqliDb{
 function getResponseFromBD(MysqliDb $db, $request){
     $db->where('request', $request);
     $cach_request = $db->get('cach_requests');
+    if (!$cach_request) {
+        return NULL;
+    }
     $date_request = DateTime::createFromFormat('Y-m-d', $cach_request[0]['date']);
     $date_now = new DateTime('now');
     $date_diff = date_diff($date_now, $date_request)->format('%a');
