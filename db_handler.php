@@ -24,7 +24,7 @@ function getResponse(MysqliDb $db, $request){
     error_log(var_export($date_now, true));
     error_log(var_export($date_diff, true));
     if ($date_diff < 1) {
-        return json_decode($response);
+        return json_decode($response, true);
     } else {
         return NULL;
     }
