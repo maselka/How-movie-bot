@@ -16,13 +16,15 @@ function initDB(): MysqliDb{
 
 function getResponse(MysqliDb $db, $request){
     $db->where('request', $request);
-    $response = $db->getValue('cach_requests', 'response');
-    $date_request = $db->getValue('cach_requests', 'date');
+    $cach_request = $db->get('cach_requests');
+
+    //$response = $db->getValue('cach_requests', 'response');
+    //$date_request = $db->getValue('cach_requests', 'date');
 
     //$date_request = date_create_from_format('Y.m.d', $date_request);
     //$date_now = new DateTime('now');
 
-    $date_request = DateTime::createFromFormat('Y.m.d', $date_request);
+    $date_request = DateTime::createFromFormat('Y.m.d', $cach_request['date']);
     $date_now = new DateTime('now');
 
     $date_diff = date_diff($date_now, $date_request);//->format('%a');
@@ -31,7 +33,7 @@ function getResponse(MysqliDb $db, $request){
     error_log(var_export($date_now, true));
     error_log(var_export($date_diff, true));
     if ($date_diff < 1) {
-        return json_decode($response, true);
+        return json_decode($cach_request['response'], true);
     } else {
         return NULL;
     }
