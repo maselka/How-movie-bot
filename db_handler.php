@@ -34,7 +34,7 @@ function insertRow(MysqliDb $db, $request, $response){
     $row = [
         'request' => $request,
         'response' => json_encode($response),
-        'date' => date('Y-m-d')
+        'date' => date_create('now')
     ];
     $id = $db->insert('cach_requests', $row);
 }
