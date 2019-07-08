@@ -29,12 +29,12 @@ function getResponse(MysqliDb $db, $request){
     $date_request = DateTime::createFromFormat('Y-m-d', $cach_request[0]['date']);
     $date_now = new DateTime('now');
 
-    $date_diff = date_diff($date_now, $date_request);//->format('%a');
+    $date_diff = date_diff($date_now, $date_request)->format('%a');
     //$date_diff=$date_request->diff($date_now)->format("%a");
     error_log(var_export($date_request, true));
     error_log(var_export($date_now, true));
     error_log(var_export($date_diff, true));
-    if ($date_diff['d'] = 0) {
+    if ($date_diff = 0) {
         return json_decode($cach_request['response'], true);
     } else {
         return NULL;
