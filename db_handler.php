@@ -18,6 +18,8 @@ function getResponse(MysqliDb $db, $request){
     $db->where('request', $request);
     $cach_request = $db->get('cach_requests');
 
+    error_log(var_export($cach_request, true));
+
     //$response = $db->getValue('cach_requests', 'response');
     //$date_request = $db->getValue('cach_requests', 'date');
 
