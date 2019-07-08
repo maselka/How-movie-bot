@@ -12,7 +12,7 @@ function initDB(): MysqliDb{
 function getResponseFromBD(MysqliDb $db, $request){
     $db->where('request', $request);
     $cach_request = $db->get('cach_requests');
-    if (!$cach_request) {
+    if ($cach_request == NULL) {
         return NULL;
     }
     $date_request = DateTime::createFromFormat('Y-m-d', $cach_request[0]['date']);
